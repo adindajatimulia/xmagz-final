@@ -42,7 +42,7 @@ body {
 </style>
 
 <template>
-  <div class="app">
+  <div class="app" >
     <svg-sprite />
     <div class="background"></div>
     <router-view />

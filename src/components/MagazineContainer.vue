@@ -1,4 +1,17 @@
 <style lang="scss">
+
+.magazine-container#blur.active{
+  filter: blur(15px);
+  // pointer-events: none;
+  user-select: none;
+}
+.magazine-container.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transform: 0.5s;
+}
+
 .magazine-container {
   display: flex;
   flex: 1;
@@ -602,6 +615,7 @@
   opacity: 0;
   transition: 500ms;
 
+   //showImage zoom image
   &.active {
     z-index: 9999;
     visibility: visible;
@@ -623,6 +637,8 @@
     }
   }
 }
+
+
 
 #table_of_contents {
   background-color: $primary-color;
@@ -711,7 +727,7 @@
 </style>
 
 <template>
-  <div class="magazine-container">
+  <div class="magazine-container" id="blur">
     <div class="header" :class="{ searchFocus: isSearchFocus }">
       <Button
         class="menu-toggle"
@@ -1501,6 +1517,15 @@ export default {
         this.zoom -= 0.1;
         window.jQuery(".magazine").turn("disable", this.zoom != 1);
       }
+    },
+    blurbg() {
+      let blur=document.getElementById('blur');
+      blur.classList.toggle('active');
+      // let popup = document.getElementById('popup');
+      // popup.classList.toggle('active');
+    },
+    autoplay() {
+      setInterval(this.nextPage, 12000);
     },
     highlight() {
       const range = window.getSelection().getRangeAt(0),

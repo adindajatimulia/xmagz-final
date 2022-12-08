@@ -248,7 +248,14 @@
       <Button class="menu-btn" v-on:click.native="zoomOut">
         <i class="fas fa-minus fa-lg"></i>
       </Button>
+      <Button class="menu-btn" v-on:click.native="autoplay">
+        <i class="fas fa-play"></i>
+      </Button>
+      <Button class="menu-btn" v-on:click.native="blurbg">
+        <i class="fas fa-dice"></i>
+      </Button>
     </div>
+
     <div class="contents-container">
       <div class="title">{{ $t("table_of_contents") }}</div>
       <div class="list-group">
@@ -290,6 +297,12 @@ export default {
     },
     zoomOut() {
       this.$parent.zoomOut();
+    },
+    blurbg() {
+      this.$parent.blurbg();
+    },
+    autoplay() {
+      this.$parent.autoplay();
     },
     toggleContent() {
       this.isContentActive = !this.isContentActive;
