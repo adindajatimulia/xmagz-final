@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
 .p20 {
-  background-image: url("/img/pages/19.jpg");
+  background-image: url("/img/pages/page.1/10.1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

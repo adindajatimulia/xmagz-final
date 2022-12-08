@@ -1,6 +1,6 @@
 <style lang="scss">
 .p2 {
-  background-image: url("/img/pages/1.jpg");
+  background-image: url("/img/pages/page.1/1.1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

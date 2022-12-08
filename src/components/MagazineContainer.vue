@@ -350,6 +350,7 @@
     justify-content: center;
     padding: 15px;
     position: relative;
+    bottom: 50px;
     transition: 500ms;
 
     &.searchFocus {
@@ -843,8 +844,6 @@
                 data-keepplaying
               >
                 <source src="/video/cover.mp4" type="video/mp4" />
-                <source src="/video/cover.webm" type="video/webm" />
-                <source src="/video/cover.ogv" type="video/ogg" />
               </video>
             </div>
             <Page1 />
@@ -1525,7 +1524,7 @@ export default {
       // popup.classList.toggle('active');
     },
     autoplay() {
-      setInterval(this.nextPage, 12000);
+      setInterval(this.nextPage, 5000);
     },
     highlight() {
       const range = window.getSelection().getRangeAt(0),
