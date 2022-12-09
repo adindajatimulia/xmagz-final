@@ -7,6 +7,12 @@
   "comment_email": "Email (Optional)",
   "comment_post": "Post",
   "table_of_contents": "Table Of Contents",
+  "song":{
+    "title": "Music",
+    "music1": "Just Relax",
+    "music2": "Please Calm My Mind",
+    "music3": "The Weekend"
+  },
   "table_of_contents_items": {
     "title1": "Regards",
     "title2": "Maspion Officially Opens",

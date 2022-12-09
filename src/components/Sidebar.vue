@@ -239,7 +239,7 @@
           <svg-icon icon="surabaya" />
         </Button>
       </div>
-      <Button class="menu-content-toggle-btn" v-on:click.native="toggleContent">
+      <Button class="menu-content-toggle-btn" v-on:click.native="toggleContent(1)">
         <i class="fas fa-list-ol fa-lg"></i>
       </Button>
       <Button class="menu-btn" v-on:click.native="zoomIn">
@@ -247,6 +247,9 @@
       </Button>
       <Button class="menu-btn" v-on:click.native="zoomOut">
         <i class="fas fa-minus fa-lg"></i>
+      </Button>
+      <Button class="menu-content-toggle-btn" v-on:click.native="toggleContent(2)">
+        <i class="fas fa-music"></i>
       </Button>
       <Button class="menu-btn" v-on:click.native="autoplay">
         <i class="fas fa-play"></i>
@@ -256,7 +259,7 @@
       </Button>
     </div>
 
-    <div class="contents-container">
+    <div   v-if="(isSelect == 1)" class="contents-container">
       <div class="title">{{ $t("table_of_contents") }}</div>
       <div class="list-group">
         <ul>
@@ -264,6 +267,15 @@
         </ul>
       </div>
     </div>
+    <div v-if="(isSelect == 2)" class="contents-container">
+      <div class="title">{{ $t("song.title") }}</div>
+      <div class="list-group">
+        <ul>
+          <slot name="song"></slot>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -283,6 +295,7 @@ export default {
         active: false,
         data: "id",
       },
+      isSelect : 1
     };
   },
   methods: {
@@ -304,8 +317,15 @@ export default {
     autoplay() {
       this.$parent.autoplay();
     },
-    toggleContent() {
-      this.isContentActive = !this.isContentActive;
+    toggleContent(param) {
+      if (param == 1) {
+        this.isSelect = param
+        this.isContentActive = !this.isContentActive;
+      }
+      if (param == 2) {
+        this.isSelect = param
+        this.isContentActive = !this.isContentActive;
+      }
     },
     changeLanguage(lang) {
       this.$i18n.locale = lang;

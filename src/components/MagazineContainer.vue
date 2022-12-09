@@ -1062,6 +1062,33 @@
             </div>
           </li>
         </template>
+
+        <template v-slot:song>
+          <li>
+            <div>
+              {{ $t("song.music1") }}
+              <audio controls>
+                <source src="/video/just relax.mp3" type="audio/mp3">
+              </audio>
+            </div>
+          </li>
+          <li>
+            <div>
+              {{ $t("song.music2") }}
+              <audio controls>
+                <source src="/video/please calm my mind.mp3" type="audio/mp3">
+              </audio>
+            </div>
+          </li>
+          <li>
+            <div>
+              {{ $t("song.music3") }}
+              <audio controls>
+                <source src="/video/the weekend.mp3" type="audio/mp3">
+              </audio>
+            </div>
+          </li>
+        </template>
       </Sidebar>
     </div>
 
