@@ -42,10 +42,11 @@ html, body {
 
 /* Define styles for the root window with dark - mode preference */
 :root.dark-theme {
-  --background-color-primary: rgba(17, 16, 34, 0.911);
+  --background-color-primary: url('/img/gelap.jpg');
   --background-color-secondary: #2d2d30;
   --accent-color: #3f3f3f;
   --text-primary-color: #ddd;
+  --background-primary: rgba(17, 16, 34, 0.911);
 }
 
 p {
@@ -55,11 +56,12 @@ p {
   display: none;
 }
 :root {
-  --background-color-primary: #ebebeb;
+  --background-color-primary: url('/img/terang.jpg');
   --background-color-secondary: #fafafa;
   --accent-color: #cacaca;
   --text-primary-color: #222;
   --element-size: 4rem; /* <- this is the base size of our element */
+  --background-primary:#ebebeb;
 }
 .switch-label {
   /* for width, use the standard element-size */
@@ -83,7 +85,7 @@ p {
 } 
 .switch-toggle {
   position: absolute;
-  background-color: var(--background-color-primary);
+  background-color: var(--background-primary);
   border-radius: 100%;
   top: calc(var(--element-size) * 0.02);
   left: calc(var(--element-size) * 0);
@@ -96,9 +98,17 @@ p {
   transform: translateX(calc(var(--element-size) * 0.6)) !important;
 }
 .container-center {
-  background-color: var(--background-color-primary);
-  height: 100vh;
-  width: 100vw;
+  background-image: var(--background-color-primary);
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -9999;
 }
 </style>
 

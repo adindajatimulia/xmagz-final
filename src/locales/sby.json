@@ -7,6 +7,12 @@
   "comment_email": "Email (Opsional)",
   "comment_post": "Kirim",
   "table_of_contents": "Daftar Isi",
+  "song":{
+    "title": "lagu",
+    "music1": "Just Relax",
+    "music2": "Please Calm My Mind",
+    "music3": "The Weekend"
+  },
   "table_of_contents_items": {
     "title1": "Salam Pembuka",
     "title2": "Maspion Resmi Mbuka",
