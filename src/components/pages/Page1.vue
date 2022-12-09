@@ -11,8 +11,9 @@
     position: absolute;
     top: 250px;
 
+    //bhs indo
     @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
-      top: 175px;
+      top: 59px;
     }
 
     @media (min-width: 481px) and (max-width: ($breakpoint-lg - 1px)) {
@@ -24,8 +25,12 @@
     }
 
     .title {
-      text-align: center;
+      letter-spacing: 0px;
+      line-height: 35px;
+      text-align: left;
       margin-bottom: 8px;
+      margin-left: 40px;
+      margin-right: 50px;
 
       @media (min-width: $breakpoint-sm) and (max-width: 480px) {
         margin-bottom: 0px;
@@ -36,7 +41,7 @@
         font-size: 2rem;
 
         @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
-          font-size: 1.6rem;
+          font-size: 40px;
         }
 
         @media (min-width: 481px) and (max-width: ($breakpoint-lg - 1px)) {
@@ -51,15 +56,17 @@
     }
 
     .text {
+      letter-spacing: 1px;
       font-size: 0.8rem;
-      text-align: center;
-      line-height: 14px;
+      text-align: left;
+      line-height: 13px;
       padding-left: 36px;
       padding-right: 36px;
-
+      
+      //bhs indo
       @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
-        font-size: 0.5rem;
-        line-height: 10px;
+        font-size: 10px;
+        line-height: 12px;
       }
 
       @media (min-width: 481px) and (max-width: ($breakpoint-lg - 1px)) {
@@ -107,7 +114,7 @@ export default {
   methods: {
     processText(id) {
       let text = document.getElementById(id).textContent;
-      let r = text.split(".");
+      let r = text.split("`");
       document.getElementById(id + "_").innerHTML = "";
       window.jQuery.each(r, function (i, w) {
         var node = document.createElement("span");

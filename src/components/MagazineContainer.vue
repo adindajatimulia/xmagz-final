@@ -1,5 +1,12 @@
 <style lang="scss">
 
+.cover{
+  background-image: url("/img/cover.1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 .magazine-container#blur.active{
   filter: blur(15px);
   // pointer-events: none;
@@ -67,7 +74,7 @@
         .language-list {
           display: flex;
           flex-flow: column;
-          max-height: 0px;
+          max-height: 10px;
           transition: 250ms;
 
           &.active {
@@ -350,7 +357,7 @@
     justify-content: center;
     padding: 15px;
     position: relative;
-    bottom: 50px;
+    bottom: 40px;
     transition: 500ms;
 
     &.searchFocus {
@@ -834,8 +841,8 @@
             class="magazine"
             :style="{ transform: 'scale(' + zoom + ')' }"
           >
-            <div>
-              <video
+            <div class="cover">
+              <!-- <video
                 id="cover"
                 class="cover"
                 autoplay
@@ -844,7 +851,7 @@
                 data-keepplaying
               >
                 <source src="/video/cover.mp4" type="video/mp4" />
-              </video>
+              </video> -->
             </div>
             <Page1 />
             <Page2 />

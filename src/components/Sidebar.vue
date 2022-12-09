@@ -4,8 +4,8 @@
   -webkit-box-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 15px 0 0 15px;
-  display: flex;
+  border-radius: 30px 0 0 30px;
+  display:flex;
   max-height: 100%;
   padding: 20px;
   position: absolute;

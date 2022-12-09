@@ -7,13 +7,13 @@
   position: relative;
 
   .content {
-    top: 520px;
+    color: #ffffff;
+    top: 10px;
     position: absolute;
-    right: 50px;
     width: 250px;
 
     @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
-      top: 370px;
+      top: 30px;
       width: 180px;
     }
 
@@ -27,8 +27,8 @@
       width: 165px;
     }
 
-    .title {
-      text-align: right;
+    /*.title {
+      text-align: left;
       margin-right: 37px;
 
       @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
@@ -99,13 +99,46 @@
           font-size: 0.55rem;
         }
       }
-    }
+    }*/
 
     .text {
-      text-align: right;
+      text-align: left;
+      padding-left: 20px;
 
       @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
+        line-height: 12px;
+      }
+
+      @media (min-width: 481px) and (max-width: ($breakpoint-lg - 1px)) {
         line-height: 13px;
+      }
+
+      @media (min-width: $breakpoint-sm) and (max-width: 480px) {
+        line-height: 13px;
+      }
+
+      span {
+        font-weight: 500;
+
+        @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
+          font-size: 0.6rem;
+        }
+
+        @media (min-width: 481px) and (max-width: ($breakpoint-lg - 1px)) {
+          font-size: 0.7rem;
+        }
+
+        @media (min-width: $breakpoint-sm) and (max-width: 480px) {
+          font-size: 0.55rem;
+        }
+      }
+    }
+
+    .text1 {
+      float: right;
+
+      @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
+        line-height: 12px;
       }
 
       @media (min-width: 481px) and (max-width: ($breakpoint-lg - 1px)) {
@@ -139,14 +172,16 @@
 <template>
   <div>
     <div style="display: none">
-      <div id="p2t">{{ $t("p2.title") }}</div>
-      <div id="p2s">{{ $t("p2.subtitle") }}</div>
+      <!-- <div id="p2t">{{ $t("p2.title") }}</div>
+      <div id="p2s">{{ $t("p2.subtitle") }}</div> -->
       <div id="p2p1s">{{ $t("p2.paragraph1") }}</div>
+      <div id="p2p2s">{{ $t("p2.paragraph2") }}</div>
     </div>
     <div class="content">
-      <div id="p2t_" class="title"></div>
-      <div id="p2s_" class="subtitle"></div>
+      <!-- <div id="p2t_" class="title"></div>
+      <div id="p2s_" class="subtitle"></div> -->
       <div id="p2p1s_" class="text"></div>
+      <div id="p2p2s_" class="text1"></div>
     </div>
   </div>
 </template>
@@ -156,12 +191,13 @@ export default {
   name: "Page1",
   mounted() {
     let ref = this;
-    ref.processText("p2t");
-    ref.processText("p2s");
+    // ref.processText("p2t");
+    // ref.processText("p2s");
     ref.processText("p2p1s");
+    ref.processText("p2p2s");
     window
       .jQuery("body")
-      .on("DOMSubtreeModified", "#p2t, #p2s, #p2p1s", function () {
+      .on("DOMSubtreeModified", "#p2t, #p2s, #p2p1s, #p2p2s", function () {
         ref.processText(window.jQuery(this).attr("id"));
       });
   },
