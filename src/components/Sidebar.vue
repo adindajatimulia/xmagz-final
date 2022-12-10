@@ -1,4 +1,5 @@
 <style lang="scss" scoped>
+
 .sidebar {
   background-color: rgba($color: $primary-color, $alpha: 1);
   -webkit-box-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.3);
@@ -210,35 +211,9 @@
       <Button class="menu-btn" v-on:click.native="highlight">
         <i class="fas fa-highlighter fa-lg"></i>
       </Button>
-      <div class="language-list" :class="{ active: language.active }">
-        <Button
-          class="menu-btn toggle"
-          v-on:click.native="language.active = !language.active"
-        >
-          <i class="fas fa-language fa-lg"></i>
-        </Button>
-        <Button
-          class="menu-btn language"
-          :class="{ active: language.data == 'id' }"
-          v-on:click.native="changeLanguage('id')"
-        >
-          <svg-icon icon="indonesia" />
-        </Button>
-        <Button
-          class="menu-btn language"
-          :class="{ active: language.data == 'en' }"
-          v-on:click.native="changeLanguage('en')"
-        >
-          <svg-icon icon="united-kingdom" />
-        </Button>
-        <Button
-          class="menu-btn language"
-          :class="{ active: language.data == 'sby' }"
-          v-on:click.native="changeLanguage('sby')"
-        >
-          <svg-icon icon="surabaya" />
-        </Button>
-      </div>
+      <Button class="menu-content-toggle-btn" v-on:click.native="toggleContent(3)">
+         <i class="fas fa-language fa-lg"></i>
+      </Button>
       <Button class="menu-content-toggle-btn" v-on:click.native="toggleContent(1)">
         <i class="fas fa-list-ol fa-lg"></i>
       </Button>
@@ -254,9 +229,9 @@
       <Button class="menu-btn" v-on:click.native="autoplay">
         <i class="fas fa-play"></i>
       </Button>
-      <Button class="menu-btn" v-on:click.native="blurbg">
+      <!-- <Button class="menu-btn" v-on:click.native="blurbg">
         <i class="fas fa-dice"></i>
-      </Button>
+      </Button> -->
     </div>
 
     <div   v-if="(isSelect == 1)" class="contents-container">
@@ -274,6 +249,44 @@
           <slot name="song"></slot>
         </ul>
       </div>
+    </div>
+
+    <div v-if="(isSelect == 3)" class="contents-container">
+        <h4 class="title" style="text-align:center;font-weight:bold;">  {{ $t("button.title") }} </h4>
+        <div class="container">
+        <Button
+          class="menu-btn language"
+          :class="{ active: language.data == 'id' }"
+          v-on:click.native="changeLanguage('id')" style="width:50px;margin-bottom:10px;"
+        >
+          <svg-icon icon="indonesia" />
+        </Button>
+        <span class="title">  {{ $t("button.indonesia") }} </span>
+        </div>
+
+        <div class="container">
+        <Button
+          class="menu-btn language"
+          :class="{ active: language.data == 'en' }"
+          v-on:click.native="changeLanguage('en')"
+          style="width:50px;margin-bottom:10px;"  
+        >
+          <svg-icon icon="united-kingdom" />
+        </Button>
+        <span class="title">  {{ $t("button.inggris") }} </span>
+        </div>
+
+        <div class="container">
+        <Button
+          class="menu-btn language"
+          :class="{ active: language.data == 'sby' }"
+          v-on:click.native="changeLanguage('sby')"
+          style="width:50px;margin-bottom:10px;"
+        >
+          <svg-icon icon="surabaya" />
+        </Button>
+        <span class="title">  {{ $t("button.jawa") }} </span>
+        </div>
     </div>
 
   </div>
@@ -323,6 +336,10 @@ export default {
         this.isContentActive = !this.isContentActive;
       }
       if (param == 2) {
+        this.isSelect = param
+        this.isContentActive = !this.isContentActive;
+      }
+      if (param == 3) {
         this.isSelect = param
         this.isContentActive = !this.isContentActive;
       }

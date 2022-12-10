@@ -7,6 +7,12 @@
   "comment_email": "Email (Opsional)",
   "comment_post": "Kirim",
   "table_of_contents": "Daftar Isi",
+  "button":{
+    "title": "Boso",
+    "inggris": "Inggris",
+    "indonesia": "Indonesia",
+    "jawa": "Suraboyoan"
+  },
   "song":{
     "title": "lagu",
     "music1": "Just Relax",

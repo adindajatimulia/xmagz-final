@@ -7,6 +7,12 @@
   "comment_email": "Email (Optional)",
   "comment_post": "Post",
   "table_of_contents": "Table Of Contents",
+  "button":{
+    "title": "Language",
+    "inggris": "English",
+    "indonesia": "Indonesia",
+    "jawa": "Javanese"
+  },
   "song":{
     "title": "Music",
     "music1": "Just Relax",

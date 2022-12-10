@@ -7,6 +7,12 @@
   "comment_email": "Email (Opsional)",
   "comment_post": "Kirim",
   "table_of_contents": "Daftar Isi",
+  "button":{
+    "title": "Bahasa",
+    "inggris": "Inggris",
+    "indonesia": "Indonesia",
+    "jawa": "Surabaya"
+  },
   "song":{
     "title": "Lagu",
     "music1": "Just Relax",
