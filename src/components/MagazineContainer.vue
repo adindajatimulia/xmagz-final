@@ -732,6 +732,162 @@
     }
   }
 }
+
+   body {font-family: Arial, Helvetica, sans-serif;}
+    
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      
+    }
+    
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius:15px;
+    }
+    
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    * {
+        box-sizing: border-box
+      }
+      body {
+        font-family: Verdana, sans-serif;
+        margin: 0
+      }
+      .mySlides {
+        display: none
+      }
+      img {
+        vertical-align: middle;
+      }
+      .slideshow-container {
+          max-width: 700px;
+          position: relative;
+          margin: auto;
+          background-color: black;
+      }
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+      }
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      /* Caption text */
+      .text {
+        color: #ffffff;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+          bottom: 96px;
+          width: 50%;
+          text-align: center;
+          left: 350px;      
+      }
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #ffffff;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #999999;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+      .active,
+      .dot:hover {
+        background-color: #111111;
+      }
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+      @-webkit-keyframes fade {
+        from {
+          opacity: .4
+        }
+        to {
+          opacity: 1
+        }
+      }
+      @keyframes fade {
+        from {
+          opacity: .4
+        }
+        to {
+          opacity: 1
+        }
+      }
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width:400px) {
+        .prev,
+        .next,
+        .text {
+          display:none;
+
+        }
+      }
+    
 </style>
 
 <template>
@@ -762,6 +918,50 @@
           <i class="fas fa-times"></i>
         </Button>
       </div>
+
+        <!-- <Button v-on:click.native="print_stat()">
+          <i class="fas fa-times"></i>
+        </Button> -->
+        
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn"  v-on:click="modal()" style="border-radius: 9px;height: 40px;width: 50px;"> <i class="fas fa-newspaper"></i></button>
+        
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+        
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close" v-on:click="close()">&times;</span>
+              <h1>Berita terbaru</h1>  
+              <div class="slideshow-container">
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 3</div>
+                  <img id="gambar-0" src="" style="width:50%">
+                  <div id="title-0" class="text"></div>
+                </div>
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 3</div>
+                  <img  id="gambar-1" src="" style="width:50%">
+                  <div id="title-1" class="text"></div>
+                </div>
+                <div class="mySlides fade">
+                  <div class="numbertext">3 / 3</div>
+                  <img  id="gambar-2" src="" style="width:50%">
+                  <div id="title-2" class="text"></div>
+                </div>
+                <a class="prev"  v-on:click="plusSlides(-1)">&#10094;</a>
+                <a class="next" v-on:click="plusSlides(1)">&#10095;</a>
+              </div>
+              <br>
+              <div style="text-align:center">
+                <span class="dot"  v-on:click="currentSlide(0)"></span>
+                <span class="dot"  v-on:click="currentSlide(1)"></span>
+                <span class="dot"  v-on:click="currentSlide(2)"></span>
+              </div>
+          </div>
+        
+        </div>
+
 
       <div class="menu-container" :class="{ active: menu.toggled }">
         <Button class="menu-btn" v-on:click.native="highlight">
@@ -1469,6 +1669,7 @@ export default {
       searchResult: [],
       inputComment: false,
       comments: [],
+      slideIndex: 1,
       commentName: {
         data: "",
         valid: true,
@@ -1513,6 +1714,99 @@ export default {
     };
   },
   methods: {
+    modal(){
+        let modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        jQuery.ajax({
+        type: 'GET',
+        async: false ,
+        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC8-PFvO8E8Bd76Nbb0e9kWg&key=AIzaSyB6OHhDCwvsJ6oG_2kBL2TmxepvcmA-3sg&maxResult=1&order=date',
+        dataType: 'json',
+        success: function (data) {
+          // alert("TEST");
+            let snippet = (data['items']);
+            for( let i = 0 ; i <= 3 ; i++){
+              document.getElementById("title-"+[i]).innerText = snippet[i]['snippet']['description'];
+              document.getElementById("gambar-"+[i]).src = snippet[i]['snippet']['thumbnails']['high']['url'];
+            }
+        },
+        error : function(x, e) {
+            alert('server error occoured');
+            if(x.status==0){ alert('0 error'); 
+            }else if(x.status==404){ alert('404 error'); 
+            }else if(x.status==500){ alert('500 error'); 
+            }else if(e=='parsererror'){ alert('Error.nParsing JSON Request failed.'); 
+            }else if(e=='timeout'){ alert('Time out.'); 
+            }else { alert(x.responseText); }
+          }
+      });
+        
+    },
+    close(){
+        let modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    },
+    plusSlides(n) {
+        var halaman = this.slideIndex += n;
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if(halaman > slides.length) {
+          this.slideIndex = 1
+        }
+        if(halaman < 1) {
+          this.slideIndex = slides.length
+        }
+        for(i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for(i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[this.slideIndex - 1].style.display = "block";
+        dots[this.slideIndex - 1].className += " active";
+    },
+     currentSlides(n) {
+        var halaman = n;
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if(halaman > slides.length) {
+          this.slideIndex = 1;
+        }
+        if(halaman < 1) {
+          this.slideIndex = slides.length;
+        }
+        for(i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for(i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[this.slideIndex - 1].style.display = "block";
+        dots[this.slideIndex - 1].className += " active";
+    },
+    print_stat(){
+     jQuery.ajax({
+      type: 'GET',
+      async: false ,
+      url: 'https://www.googleapis.com/youtube/v3/channels?part=snippet,contentDetails,statistics&id=UCkXmLjEr95LVtGuIm3l2dPg&key=AIzaSyB6OHhDCwvsJ6oG_2kBL2TmxepvcmA-3sg',
+      dataType: 'json',
+      success: function (data) {
+        alert("TEST");
+        console.log(data);
+      },
+      error : function(x, e) {
+          alert('server error occoured');
+          if(x.status==0){ alert('0 error'); 
+          }else if(x.status==404){ alert('404 error'); 
+          }else if(x.status==500){ alert('500 error'); 
+          }else if(e=='parsererror'){ alert('Error.nParsing JSON Request failed.'); 
+          }else if(e=='timeout'){ alert('Time out.'); 
+          }else { alert(x.responseText); }
+        }
+    });
+  },
     turnPage(page) {
       const magazine = window.jQuery(".magazine");
       if (magazine.turn("hasPage", page)) magazine.turn("page", page);
