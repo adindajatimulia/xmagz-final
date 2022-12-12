@@ -887,7 +887,82 @@
 
         }
       }
-    
+
+.main{
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.wrapper{
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 30px;
+}
+
+.left-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.status-wrapper{
+    width: 100%;
+    height: 120px;
+    background: #fff;
+    /* border: 1px solid #dfdfdf; */
+    border-radius: 2px;
+    padding: 10px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.status-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.status-card{
+    flex: 0 0 auto;
+    width: 80px;
+    max-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.profile-pic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 3px;
+    background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+}
+
+.profile-pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.username{
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    margin-top:5px;
+    color: rgba(0, 0, 0, 0.5)
+}
+
 </style>
 
 <template>
@@ -932,32 +1007,50 @@
           <!-- Modal content -->
           <div class="modal-content">
             <span class="close" v-on:click="close()">&times;</span>
-              <h1>Berita terbaru</h1>  
-              <div class="slideshow-container">
-                <div class="mySlides fade">
-                  <div class="numbertext">1 / 3</div>
-                  <img id="gambar-0" src="" style="width:50%">
-                  <div id="title-0" class="text"></div>
-                </div>
-                <div class="mySlides fade">
-                  <div class="numbertext">2 / 3</div>
-                  <img  id="gambar-1" src="" style="width:50%">
-                  <div id="title-1" class="text"></div>
-                </div>
-                <div class="mySlides fade">
-                  <div class="numbertext">3 / 3</div>
-                  <img  id="gambar-2" src="" style="width:50%">
-                  <div id="title-2" class="text"></div>
-                </div>
-                <a class="prev"  v-on:click="plusSlides(-1)">&#10094;</a>
-                <a class="next" v-on:click="plusSlides(1)">&#10095;</a>
-              </div>
-              <br>
-              <div style="text-align:center">
-                <span class="dot"  v-on:click="currentSlide(0)"></span>
-                <span class="dot"  v-on:click="currentSlide(1)"></span>
-                <span class="dot"  v-on:click="currentSlide(2)"></span>
-              </div>
+            <h1 style="font-weight:bold;">Feeds Berita Terbaru</h1>
+            <section class="main" style="margin-top:-10px;">
+                  <div class="wrapper">
+                      <div class="left-col">
+                          <div class="status-wrapper">
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user0" src="" alt="" v-on:click="framekonten(0)"></div>
+                                  <p class="username0"></p>
+                              </div>
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user1" src="" alt="" v-on:click="framekonten(1)"></div>
+                                  <p class="username1" ></p>
+                              </div>
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user2" src="" alt=""  v-on:click="framekonten(2)"></div>
+                                  <p class="username2"></p>
+                              </div>
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user3" src="" alt=""  v-on:click="framekonten(3)"></div>
+                                  <p class="username3" ></p>
+                              </div>
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user4" src="" alt=""  v-on:click="framekonten(4)"></div>
+                                  <p class="username4" ></p>
+                              </div>
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user5" src="" alt=""  v-on:click="framekonten(1)"></div>
+                                  <p class="username5"></p>
+                              </div>
+                              <div class="status-card">
+                                  <div class="profile-pic"><img id="user6" src="" alt=""  v-on:click="framekonten(2)"></div>
+                                  <p class="username6"></p>
+                              </div>
+                             
+                      </div>
+                  </div>
+                  </div>
+              </section>
+            
+             <iframe width="100%" height="600"
+              src="" id="main-news-content">
+              </iframe>
+       
+             
           </div>
         
         </div>
@@ -1714,21 +1807,44 @@ export default {
     };
   },
   methods: {
+    framekonten(param){
+       jQuery.ajax({
+        type: 'GET',
+        async: false ,
+        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC8-PFvO8E8Bd76Nbb0e9kWg&key=AIzaSyD4htjzvjqrRRYtEcjkQdsHTwHqRypdX7U&maxResult=8&order=date',
+        dataType: 'json',
+        success: function (data) {
+          // alert("TEST");
+             document.getElementById("main-news-content").src='https://www.youtube.com/embed/' + data['items'][param]['id']['videoId'];
+          // document.getElementById("main-news-content").src="https://www.youtube.com/embed/qpYWOXT3iuM"; 
+       }
+       })
+    },
     modal(){
         let modal = document.getElementById("myModal");
         modal.style.display = "block";
         jQuery.ajax({
         type: 'GET',
         async: false ,
-        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC8-PFvO8E8Bd76Nbb0e9kWg&key=AIzaSyB6OHhDCwvsJ6oG_2kBL2TmxepvcmA-3sg&maxResult=1&order=date',
+        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC8-PFvO8E8Bd76Nbb0e9kWg&key=AIzaSyD4htjzvjqrRRYtEcjkQdsHTwHqRypdX7U&maxResult=8&order=date',
         dataType: 'json',
         success: function (data) {
           // alert("TEST");
-            let snippet = (data['items']);
-            for( let i = 0 ; i <= 3 ; i++){
-              document.getElementById("title-"+[i]).innerText = snippet[i]['snippet']['description'];
-              document.getElementById("gambar-"+[i]).src = snippet[i]['snippet']['thumbnails']['high']['url'];
+            
+            for( let i = 0 ; i <= 6 ; i++){
+
+              if( i > 4){
+                   document.getElementById("user"+[5]).src = data['items'][0]['snippet']['thumbnails']['high']['url'];    
+                   document.getElementById("main-news-content").src='https://www.youtube.com/embed/' + data['items'][0]['id']['videoId'];
+                   document.getElementById("user"+[6]).src = data['items'][1]['snippet']['thumbnails']['high']['url'];    
+                   document.getElementById("main-news-content").src='https://www.youtube.com/embed/' + data['items'][0]['id']['videoId'];
+              }
+              let snippet = (data['items'][i]['snippet']['channelTitle']);
+              document.getElementsByClassName("username"+[i]).innerHTML = snippet;
+              document.getElementById("user"+[i]).src = data['items'][i]['snippet']['thumbnails']['high']['url'];    
+             document.getElementById("main-news-content").src='https://www.youtube.com/embed/' + data['items'][0]['id']['videoId'];
             }
+              // document.getElementById("main-news-content").src="https://www.youtube.com/embed/qpYWOXT3iuM";
         },
         error : function(x, e) {
             alert('server error occoured');
